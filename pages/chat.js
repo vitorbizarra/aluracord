@@ -119,6 +119,14 @@ export default function ChatPage() {
                             alignItems: 'center',
                         }}
                     >
+
+                        <ButtonSendSticker
+                            onStickerClick={(sticker) => {
+                                console.log('Usando o componente] Salva sticker banco', sticker);
+                                handleNovaMensagem(`:sticker: ${sticker}`)
+                            }}
+                        />
+                        
                         <TextField
                             value={mensagem}
                             onChange={(event) => {
@@ -144,11 +152,23 @@ export default function ChatPage() {
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
                         />
-                        <ButtonSendSticker
-                            onStickerClick={(sticker) => {
-                                console.log('Usando o componente] Salva sticker banco', sticker);
-                                handleNovaMensagem(`:sticker: ${sticker}`)
+
+                        <Button 
+                            styleSheet={{
+                                borderRadius: '10px',
+                                padding: '0 3px 0 0',
+                                minWidth: '50px',
+                                minHeight: '46px',
+                                fontSize: '20px',
+                                marginBottom: '8px',
+                                lineHeight: '0',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                backgroundColor: appConfig.theme.colors.neutrals[300],
                             }}
+                            label='↵'
+                            onClick={() => handleNovaMensagem(mensagem)}
                         />
                     </Box>
                 </Box>
@@ -161,8 +181,13 @@ function Header() {
     return (
         <>
             <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
-                <Text variant='heading5'>
-                    Chat
+                <Text 
+                    variant='heading4'
+                    styleSheet={{
+                        color: appConfig.theme.colors.neutrals[100],
+                }}
+                >
+                    Vila dos Pelicanos
                 </Text>
                 <Button
                     variant='tertiary'
