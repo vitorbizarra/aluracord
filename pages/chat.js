@@ -23,11 +23,6 @@ export default function ChatPage() {
     const usuarioLogado = roteamento.query.username;
     const [mensagem, setMensagem] = React.useState('');
     const [listaDeMensagens, setListaDeMensagens] = React.useState([
-        // {
-        //     id: 1,
-        //     de: 'omariosouto',
-        //     texto: ':sticker: https://c.tenor.com/TKpmh4WFEsAAAAAC/alura-gaveta-filmes.gif',
-        // }
     ]);
     
     React.useEffect(() => {
@@ -139,10 +134,12 @@ export default function ChatPage() {
                                     handleNovaMensagem(mensagem);
                                 }
                             }}
-                            placeholder="Insira sua mensagem aqui..."
+                            placeholder="Mensagem"
                             type="textarea"
                             styleSheet={{
                                 width: '100%',
+                                height: '46px',
+                                lineHeight: '34px',
                                 border: '0',
                                 resize: 'none',
                                 borderRadius: '5px',
@@ -168,7 +165,9 @@ export default function ChatPage() {
                                 backgroundColor: appConfig.theme.colors.neutrals[300],
                             }}
                             label='↵'
-                            onClick={() => handleNovaMensagem(mensagem)}
+                            onClick={() => { mensagem === '' ?
+                                console.log('Texto não enviado') :
+                                handleNovaMensagem(mensagem) }}
                         />
                     </Box>
                 </Box>
